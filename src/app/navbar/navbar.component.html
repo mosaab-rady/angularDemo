@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <a
+    class="button"
+    routerLink=""
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Angular Demo
+  </a>
+  <a
+    class="button"
+    routerLink="/privacy"
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page"
+    [routerLinkActiveOptions]="{ exact: true }"
+    #rla="routerLinkActive"
+  >
+    privacy {{ rla.isActive ? " is opened" : "" }}
+  </a>
+  <button class="button" (click)="logout()">logout</button>
+</nav>

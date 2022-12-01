@@ -1,0 +1,83 @@
+<p>login works!</p>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" formControlName="Email" required="true" />
+
+    <div *ngIf="loginForm.controls.Email.touched">
+      <div *ngIf="loginForm.controls.Email.errors?.['email']">
+        Please provide a valid email
+      </div>
+      <div *ngIf="loginForm.controls.Email.errors?.['required']">
+        Please provide your email
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      name="password"
+      formControlName="Password"
+      required="true"
+    />
+    <div *ngIf="loginForm.controls.Password.touched">
+      <div *ngIf="loginForm.controls.Password.errors?.['required']">
+        Please provide your password
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="rememberMe">Remember Me:</label>
+    <input type="checkbox" name="rememberMe" formControlName="RememberMe" />
+  </div>
+
+  <div *ngIf="!loginForm.valid">
+    {{loginForm.errors?.[0]}}
+  </div>
+
+  <button type="submit" [disabled]="!loginForm.valid">login</button>
+</form>
+
+<!-- <button type="button" (click)="login()">log in</button> -->
+<!-- 
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="password">Password </label>
+  <input id="password" type="text" formControlName="password" />
+
+  <div formGroupName="address">
+    <h2>Address</h2>
+
+    <label for="street">Street: </label>
+    <input id="street" type="text" formControlName="street" />
+
+    <label for="city">City: </label>
+    <input id="city" type="text" formControlName="city" />
+
+    <label for="state">State: </label>
+    <input id="state" type="text" formControlName="state" />
+
+    <label for="zip">Zip Code: </label>
+    <input id="zip" type="text" formControlName="zip" />
+  </div>
+
+  <p>Complete the form to enable button.</p>
+
+  <p>Form Status: {{ loginForm.status }}</p>
+  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+</form>
+
+<form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="password">Password </label>
+  <input id="password" type="text" formControlName="password" />
+  <button type="submit" [disabled]="!newForm.valid">Submit</button>
+</form> -->

@@ -1,0 +1,41 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="!signupForm.valid">
+    {{ signupForm.errors?.[0]}}
+  </div>
+  <label for="name">Name:</label>
+  <input type="text" name="name" formControlName="name" />
+  <div *ngIf="!signupForm.valid">
+    <div
+      *ngIf="signupForm.controls.name.errors?.['required']
+			&& signupForm.controls.name.touched"
+    >
+      name is required
+    </div>
+  </div>
+
+  <label for="email">Email:</label>
+  <input type="text" name="email" formControlName="email" />
+  <div *ngIf="signupForm.controls.email.touched">
+    <div *ngIf="signupForm.controls.email.errors?.['email']">
+      not valid email format
+    </div>
+    <div *ngIf="signupForm.controls.email.errors?.['required']">
+      email is required
+    </div>
+  </div>
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" formControlName="password" />
+
+  <label for="confirmPassword">Password Confirm:</label>
+  <input
+    type="password"
+    name="confirmPassword"
+    formControlName="confirmPassword"
+  />
+
+  <label for="number">Number:</label>
+  <input type="number" name="number" formControlName="number" />
+
+  <button type="submit">create new account</button>
+</form>
